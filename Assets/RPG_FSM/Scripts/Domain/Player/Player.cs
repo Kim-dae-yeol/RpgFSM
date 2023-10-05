@@ -1,4 +1,6 @@
 using System;
+using RPG_FSM.Scriptable_Objects.Player.PlayerSOScripts;
+using RPG_FSM.Scripts.Components.State;
 using UnityEngine;
 
 namespace RPG_FSM.Scripts.Domain
@@ -8,7 +10,10 @@ namespace RPG_FSM.Scripts.Domain
         [field: Header("Animation Data")]
         [field: SerializeField]
         public PlayerAnimationData AnimationData { get; private set; }
-        
+
+        private PlayerStateMachine _stateMachine;
+
+        [field: SerializeField] public PlayerDataSo PlayerData { get; private set; }
         public Rigidbody Rigidbody { get; private set; }
         public Animator Animator { get; private set; }
         public PlayerInput PlayerInput { get; private set; }
@@ -18,9 +23,10 @@ namespace RPG_FSM.Scripts.Domain
         {
             AnimationData.Initialize();
             Rigidbody = GetComponent<Rigidbody>();
-            Animator = GetComponent<Animator>();
+            Animator = GetComponentInChildren<Animator>();
             PlayerInput = GetComponent<PlayerInput>();
             Controller = GetComponent<CharacterController>();
+            _stateMachine = GetComponent<PlayerStateMachine>();
         }
 
         private void Start()
