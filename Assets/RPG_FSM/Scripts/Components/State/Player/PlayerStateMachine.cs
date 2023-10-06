@@ -106,12 +106,9 @@ namespace RPG_FSM.Scripts.Components.State
         {
             Vector3 forward = MainCameraTransform.forward;
             Vector3 right = MainCameraTransform.right;
-
+            
             forward.y = 0;
             right.y = 0;
-
-            forward.Normalize();
-            right.Normalize();
 
             return forward * direction.y + right * direction.x;
         }

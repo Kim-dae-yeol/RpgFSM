@@ -12,21 +12,20 @@ namespace RPG_FSM.Scripts.Components.State
 
         public override void Enter()
         {
-            animator.SetBool(StateMachine.Player.AnimationData.WalkParameterHash, true);
             base.Enter();
+            animator.SetBool(StateMachine.Player.AnimationData.WalkParameterHash, true);
         }
 
         public override void Exit()
         {
-            animator.SetBool(StateMachine.Player.AnimationData.WalkParameterHash, false);
             base.Exit();
+            animator.SetBool(StateMachine.Player.AnimationData.WalkParameterHash, false);
         }
 
         public override void Update()
         {
             base.Update();
-            _moveDirection = StateMachine.MovementDirection;
-            StateMachine.Player.Controller.Move(_moveDirection * MovementSpeed * Time.deltaTime);
+            
         }
 
         public override void PhysicsUpdate()

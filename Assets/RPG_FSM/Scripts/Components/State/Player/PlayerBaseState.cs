@@ -31,6 +31,8 @@ namespace RPG_FSM.Scripts.Components.State
             Quaternion rotation = Quaternion.Slerp(StateMachine.transform.rotation, targetRotation,
                 Time.deltaTime * StateMachine.Player.PlayerData.GroundData.BaseRotationDamping);
             StateMachine.transform.rotation = rotation;
+            
+            StateMachine.Player.Controller.Move(StateMachine.MovementDirection * MovementSpeed * Time.deltaTime);
         }
 
         public virtual void PhysicsUpdate()
